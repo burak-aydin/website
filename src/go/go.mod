@@ -1,6 +1,6 @@
 module github.com/burak-aydin/website
 
-go 1.21.3
+go 1.18
 
 require (
 	github.com/gin-gonic/gin v1.9.1
