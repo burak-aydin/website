@@ -6,7 +6,7 @@ import (
 )
 
 func RegisterRouters(e *gin.Engine) {
-	e.GET("/ping", func(context *gin.Context) {
+	e.GET("/api/ping", func(context *gin.Context) {
 		context.JSON(http.StatusOK, "pong")
 	})
 }
