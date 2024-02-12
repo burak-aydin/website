@@ -10,7 +10,7 @@ const (
 	EnvKeyEmailSender   = "ENV_EMAIL_SENDER"
 	EnvKeyEmailReceiver = "ENV_EMAIL_RECEIVER"
 	EnvKeyEmailPassword = "ENV_EMAIL_PASSWORD"
-	EnvKeyEmailHost     = "mod "
+	EnvKeyEmailHost     = "ENV_EMAIL_HOST"
 )
 
 func init() {
