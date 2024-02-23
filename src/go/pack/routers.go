@@ -10,6 +10,11 @@ import (
 
 func RegisterRouters(e *gin.Engine) {
 	e.Use(corsMiddleware())
+	e.LoadHTMLFiles("../../index.html")
+	e.GET("/", func(context *gin.Context) {
+		context.HTML(http.StatusOK, "index.html", gin.H{})
+	})
+
 	e.GET("/api/ping", func(context *gin.Context) {
 		log.Info("ping/pong")
 		context.JSON(http.StatusOK, "pong")
