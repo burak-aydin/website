@@ -9,6 +9,7 @@ import (
 )
 
 func RegisterRouters(e *gin.Engine) {
+	e.Use(corsMiddleware())
 	e.GET("/api/ping", func(context *gin.Context) {
 		log.Info("ping/pong")
 		context.JSON(http.StatusOK, "pong")
@@ -23,4 +24,18 @@ func RegisterRouters(e *gin.Engine) {
 		email.SendEmail(params.Content)
 		context.JSON(http.StatusOK, "Success")
 	})
+}
+
+func corsMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+		c.Next()
+	}
 }

@@ -1,9 +1,35 @@
- <!DOCTYPE html>
-<html>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Portfolio</title>
+</head>
+Send me a message!
+<textarea id="send-message-text" name="freeform" rows="4" cols="50">
+</textarea>
+<button id="send-message">Send</button>
+<script>
+    function SendFunc(){
+        apiRequest("https://burak-aydin-test.cyclic.app/api/send-email","POST", document.getElementById("send-message-text").value, console.log)
+        console.log()
+    }
+    document.getElementById("send-message").addEventListener('click', function(e){
+        SendFunc();
+    })
+    function apiRequest(url, method, body, callback){
+        console.log(url);
+        var req = new XMLHttpRequest();
+        req.open(method, url, true);
+        req.setRequestHeader('Content-type', 'application/json');
+        if (body != null) {
+            j = {}
+            j.content = body
+            req.send(JSON.stringify(j));
+        }
+        req.send();
+        req.onreadystatechange = function(){
+            if(req.readyState == 4 && req.status == 200) callback(req.responseText);
+        };
+    }
 
-<h1>test</h1>
-<p>paragraph</p>
-
-</body>
-</html> 
+</script>
+</html>
