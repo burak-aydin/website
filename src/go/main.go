@@ -19,7 +19,7 @@ func main() {
 	log.Info("start-up")
 
 	s := &http.Server{
-		Addr:         "localhost:8080",
+		Addr:         "0.0.0.0:8080",
 		Handler:      GetHandler(),
 		ReadTimeout:  time.Second * 10,
 		WriteTimeout: time.Second * 10,
