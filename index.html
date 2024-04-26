@@ -9,7 +9,7 @@ Send me a message please!
 <button id="send-message">Send</button>
 <script>
     function SendFunc(){
-        apiRequest("https://burak-aydin-test.cyclic.app/api/send-email","POST", document.getElementById("send-message-text").value, console.log)
+        apiRequest("https://testapp-loqb.onrender.com/api/send-email","POST", document.getElementById("send-message-text").value, console.log)
         console.log()
     }
     document.getElementById("send-message").addEventListener('click', function(e){
